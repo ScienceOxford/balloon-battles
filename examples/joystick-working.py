@@ -27,19 +27,18 @@ def button_press():
                 return buttons[number]
 
 def joystick_push():
-    x = int(pin0.read_analog() // 2)
-    y = int(pin1.read_analog() // 2)
+    x = int(pin0.read_analog() - 512)
+    y = int(pin1.read_analog() - 512)
     left = (y + x)
     right = (y - x)
     return left, right
 
 '''
-MAIN LOOP
+MAIN CODE
 '''
+
 while True:
     joystick = joystick_push()
-    left = str(joystick[0])
-    right = str(joystick[1])
-    message = left + " " + right
+    message = str(joystick[0]) + " " + str(joystick[1])
     radio.send(message)
     sleep(10)
