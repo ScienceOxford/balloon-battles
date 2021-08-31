@@ -87,7 +87,7 @@ while True:
         elif message == 'E':
             display.show(Image.SKULL)
         elif message == 'F':
-            display.show(Image.TURTLE)
+            display.show(Image.TORTOISE)
 
         else:
             try:
