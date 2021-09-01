@@ -41,3 +41,4 @@ while True:
     joystick = joystick_push()
     instructions = str(joystick[0]) + " " + str(joystick[1])
     print(instructions)
+    sleep(10)
