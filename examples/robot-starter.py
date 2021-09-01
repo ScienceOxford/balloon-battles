@@ -74,25 +74,25 @@ while True:
     if button_a.was_pressed():
         test()
 
-    message = radio.receive()
-    if message is not None:
-        if message == 'A':
+    instructions = radio.receive()
+    if instructions is not None:
+        if instructions == 'A':
             display.show(Image.HAPPY)
-        elif message == 'B':
+        elif instructions == 'B':
             display.show(Image.DUCK)
-        elif message == 'C':
+        elif instructions == 'C':
             display.show(Image.GIRAFFE)
-        elif message == 'D':
+        elif instructions == 'D':
             display.show(Image.HEART)
-        elif message == 'E':
+        elif instructions == 'E':
             display.show(Image.SKULL)
-        elif message == 'F':
+        elif instructions == 'F':
             display.show(Image.TORTOISE)
 
         else:
             try:
-                message = message.split()
-                drive(int(message[0]), int(message[1]))
+                instructions = instructions.split()
+                drive(int(instructions[0]), int(instructions[1]))
             except:
                 stop()
                 display.show(Image.SAD)
