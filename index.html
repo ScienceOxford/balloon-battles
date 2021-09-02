@@ -16,23 +16,62 @@
 
   <div id="intro">
     <p>Resources for the 'Robot Buggy Arena' Creative Computing Club.</p>
-    <p>...</p>
+    <p>During this workshop, you will program a micro:bit robot and joystick, then test your coding and driving skills in our arenas!</p>
     <p>This page recaps what <a href="https://bit.ly/Sep21CCC" target="_blank">we discussed as a group</a>.</p>
     <p>To skip to the examples and ideas, <a href="#extensions">click here</a>.</p>
     <br>
   </div>
 
-  <div id="starter" class="left">
-    <h3>Getting started</h3>
-    <p>--Test robot (link to starter code).</p>
-    <p>--Edit channel number & test again.</p>
+    <div id="starter" class="left">
+    <h3>Creating your first micro:bit program</h3>
+    <p>Open <a href="https://codewith.mu/" target="_blank">the Mu editor</a> on your computer. <strong>If there is code on the screen</strong>, start a New program from the menu.</p>
+    <img src="https://raw.githubusercontent.com/ScienceOxford/cyber-pet/master/images/mu_toolbar_new.png" alt="Mu menu, highlighting 'New'" width="1000px" height="auto">
+    <p>Type these two lines of code into your blank window:</p>
+    <pre>from microbit import *
+display.show(Image.HAPPY)</pre>
+    <br>
+    <p>Plug your micro:bit into the computer, then click Flash:</p>
+    <img src="https://raw.githubusercontent.com/ScienceOxford/cyber-pet/master/images/mu_toolbar_flash.png" alt="Mu menu, highlighting 'Flash'" width="1000px" height="auto">
+    <p>Some code should be running on your micro:bit!</p>
+    <p><strong>If you get a message scrolling across the micro:bit's screen</strong>, this is an error message!</p>
+    <p><strong>Debug</strong> your code, then click Flash again to test your changes.</p>
+    <p>Once your code is working - change it!</p>
+    <p>Instead of <code>HAPPY</code>, can you think of another <code>Image</code> the micro:bit could <code>show</code> on its <code>display</code>?</p>
+    <br>
+    <br>
+  </div>
+
+  <div id="robot" class="left">
+    <h3>Preparing your robot</h3>
+    <p>Choose your robot, and sit it on the stand so that the wheels are not touching anything - this way you can test it without it driving off!</p>
+    <br>
+    <p>Make sure that your robot it not going to drive away, then turn it on by flipping the black switch on the top.</p>
+    <p>Now, press button 'A' on the robot's micro:bit - what happens?</p>
+    <div class=debugging>
+        <p>The robot's wheels should turn - both forwards, in opposite directions, then both backwards - <strong>if this does not happen, check the following:</strong></p>
+        <ul>
+            <li>Is the robot on? There should be two lights on underneath. If not, try flipping the black switch again.</li>
+            <li>
+            <li>If it works partly, or turns on and off, give the robot to the workshop leader and choose another one.</li>
+        </ul>
+    </div>
+    <br>
+    <p>Download the <a href="https://raw.githubusercontent.com/ScienceOxford/balloon-battles/main/examples/robot-starter.py" target="_blank">robot starter code</a> if it is not already open.</p>
+    <p><strong>Unplug the micro:bit you used before, and plug the robot's micro:bit in instead.</strong></p>
+    <br>
+    <p>Before adding in joystick control, you need to make sure that nobody else can control your robot!</p>
+    <p><strong>Look on the front of your robot - by its name will be a number.</strong></p>
+    <p>Find the below line in the robot code, and change <code>channel=7</code> from <code>7</code> to your robot's number, then flash the updated code to your robot's micro:bit.</p>
+    <pre>radio.config(channel=7, group=0, queue=1)</pre>
+    <br>
+    <p><strong>Test your code</strong> - does the robot still work the same as it did before?</p>
+    <br>
+    <br>
   </div>
 
   <div id="joystick" class="left">
     <h3>Sending instructions from the joystick</h3>
     <p>--Open joystick code & test in repl</p>
-    <p>--Briefly explain the maths behind the function</p>
-    <img src="https://content.instructables.com/FKJ/TKAY/JYP2TVT1/FKJTKAYJYP2TVT1.png" alt="Comparison of x-y values on joystick to the motion of the robot" width="600px" height="auto">
     <p>--Test images - choose what you want on your display</p>
     <p>--Edit channel number & send radio message instead of print (don't forget sleep!)</p>
     <p>--Test your robot - does it move the way you expect?</p>
