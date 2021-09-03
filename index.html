@@ -51,7 +51,6 @@ display.show(Image.HAPPY)</pre>
         <p>The robot's wheels should turn - both forwards, in opposite directions, then both backwards - <strong>if this does not happen, check the following:</strong></p>
         <ul>
             <li>Is the robot on? There should be two lights on underneath. If not, try flipping the black switch again.</li>
-            <li>
             <li>If it works partly, or turns on and off, give the robot to the workshop leader and choose another one.</li>
         </ul>
     </div>
@@ -71,17 +70,58 @@ display.show(Image.HAPPY)</pre>
 
   <div id="joystick" class="left">
     <h3>Sending instructions from the joystick</h3>
-    <p>--Open joystick code & test in repl</p>
-    <p>--Test images - choose what you want on your display</p>
-    <p>--Edit channel number & send radio message instead of print (don't forget sleep!)</p>
-    <p>--Test your robot - does it move the way you expect?</p>
+    <p>Unplug the robot from your computer, and plug in your other micro:bit.</p>
+    <p>Push this micro:bit into the top of your joystick.</p>
+    <img src=".\images\joystick.jpg" alt="Mu menu, highlighting 'Flash'" width="1000px" height="auto">
+    <br>
+    <p>Download the <a href="https://raw.githubusercontent.com/ScienceOxford/balloon-battles/main/examples/joystick-starter.py" target="_blank">joystick starter code</a> if it is not already open.</p>
+    <p>Flash the joystick code to your micro:bit, then click the REPL button in Mu:</p>
+    <img src=".\images\mu_repl.png" alt="Mu menu, highlighting 'Flash'" width="1000px" height="auto">
+    <br>
+    <p>Press the reset button on the back of your micro:bit - you should now see numbers scrolling in Mu. <strong>What happens when you move the stick on the joystick?</strong></p>
+    <br>
+    <p>The numbers you see are what will be sent to the robot - the first number is telling the left motor what to do, and the second number is telling the right number what to do!</p>
+    <p>The higher the number, the faster the robot will move.</p>
+    <br>
+    <p>Scroll to the top of the joystick code, and change <code>channel=7</code> from <code>7</code> to your robot's number (your two sets of code should now match), then flash the updated code to your micro:bit.</p>
+    <pre>radio.config(channel=7, group=0, queue=1)</pre>
+    <br>
+    <p>Finally, scroll down to the bottom of the joystick code - you are going to add a couple of lines to the code that is already there. <strong>Don't delete or repeat any of the code!</strong></p>
+    <p>The code that is there already is doing the following:</p>
+    <ul>
+        <li>forever...</li>
+        <ul>
+            <li>see where the joystick is</li>
+            <li>convert this into left and right</li>
+            <li>show us the numbers</li>
+            <li>pause</li>
+        </ul>
+    </ul>
+    <pre>while True:
+        joystick = joystick_push()
+        instructions = str(joystick[0]) + " " + str(joystick[1])
+        print(instructions)
+        sleep(10)</pre>
+    <br>
+    <p>We're going to add one more instruction to this <em>algorithm</em>:</p>
+    <ul>
+        <ul>
+            <li>send the numbers to the robot</li>
+        </ul>
+    </ul>
+    <p>Add this line of code to the end, pay attention to the indentation.</p>
+    <pre>       radio.send(instructions)</pre>
+    <br>
+    <p>A working example of the joystick code can be <a href="https://raw.githubusercontent.com/ScienceOxford/balloon-battles/main/examples/joystick-working.py">downloaded here</a>.</p>
+    <p><strong>Test your robot in the arena - does it move the way you expect?</strong></p>
+    <br>
   </div>
 
   <div id="extensions" class="left">
     <h3>What next?</h3>
     <p>How do you want to improve your robot?</p>
     <p>At the end of the workshop you will get the chance to test your robotics skills by popping balloons in our arena, so spend the time you have wisely to make your robot as good as it can be!</p>
-    <p>The links below will help you with some of our ideas, or ask us for help to try out an idea of your own!</p>
+    <p>The links below will help you with some of our ideas, or ask us for help to try out an idea of your own.</p>
     <br>
   </div>
 

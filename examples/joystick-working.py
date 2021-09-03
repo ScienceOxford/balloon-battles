@@ -40,5 +40,6 @@ MAIN CODE
 while True:
     joystick = joystick_push()
     instructions = str(joystick[0]) + " " + str(joystick[1])
-    radio.send(instructions)
+    print(instructions)
     sleep(10)
+    radio.send(instructions)
