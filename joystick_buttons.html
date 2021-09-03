@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Robot Buggy Arena</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Use the Joystick's Buttons</h1>
+  </header>
+
+  <div id="intro" class="left">
+    <p>Currently, your code sends information to the robot when you push the stick, and doesn't use the 6 buttons.</p>
+    <p>To add these in, you will need to edit the joystick code, <strong>and</strong> the robot code.</p>
+    <br>
+  </div>
+
+  <div id="button-a-joystick" class="left">
+    <h3>Pressing Button A</h3>
+    <p>Open your joystick code, and look at your <code>while True</code> loop.</p>
+    <p>The first line tells the micro:bit to look at the stick, we need to add in another line underneath it, to look at the buttons as well.</p>
+    <p>Edit your code (don't delete or repeat any of it) to look like this:</p>
+    <pre>while True:
+        joystick = joystick_push()
+
+        button = button_press()
+
+        instructions = str(joystick[0]) + " " + str(joystick[1])
+        radio.send(instructions)
+        sleep(10)</pre>
+    <br>
+    <p>Now you need to tell the code:</p>
+    <ul>
+        <li>If we have pressed button A, send a message to say that.</li>
+        <li>If we have NOT pressed button A, send the original instructions to turn the motors.</li>
+    </ul>
+    <p>This means adding in some new code, and changing the <strong>indentation</strong>:</p>
+    <pre>while True:
+        joystick = joystick_push()
+        button = button_press()
+
+        if button == 'A':
+            radio.send('A')
+            sleep(100)
+
+        else:
+            instructions = str(joystick[0]) + " " + str(joystick[1])
+            radio.send(instructions)
+            sleep(10)</pre>
+    <br>
+    <p>Look carefully at the example code - which parts are the same, and which parts are new?</p>
+    <p><strong>Indentation is very important!</strong> Test your code to check for errors, and see what happens to your robot when you press the joystick's 'A' button.</p>
+    <br>
+  </div>
+
+  <div id="button-a-robot" class="left">
+    <h3>Responding to Button A</h3>
+    <p>Does your robot show you a happy face when you press the joystick's 'A' button?</p>
+    <p>This is because the robot's code has the following instructions in it:</p>
+    <pre>if instructions == 'A':
+        display.show(Image.HAPPY)</pre>
+    <br>
+    <p>What do you want to happen? You can edit this code (lines 79-80) to make something different happen when you press 'A' on your joystick.</p>
+    <p><strong>Only change the <code>display.show(Image.HAPPY)</code> line, and be careful of your indention!</strong></p>
+    <p>Remember to test your code carefully before making any more changes.</p>
+    <br>
+  </div>
+
+  <div id="more-buttons" class="left">
+    <h3>Adding the rest of the buttons</h3>
+    <p>Once you have Button A working the way you like, you can add in the other buttons!</p>
+    <p>To change the joystick code, you will add in even more code, in the middle of what you have done before.</p>
+    <p>The code below shows you buttons A & B - follow the same structure to add in C, D, E & F, then switch to your robot's code to edit how it will respond.</p>
+    <pre>while True:
+        joystick = joystick_push()
+        button = button_press()
+
+        if button == 'A':
+            radio.send('A')
+            sleep(100)
+
+        elif button == 'B':
+            radio.send('B')
+            sleep(100)
+
+        else:
+            instructions = str(joystick[0]) + " " + str(joystick[1])
+            radio.send(instructions)
+            sleep(10)</pre>
+    <br>
+    <p>A complete working example of the joystick code can be <a href="https://raw.githubusercontent.com/ScienceOxford/balloon-battles/main/examples/joystick-working%2Bbuttons.py">downloaded here</a>.</p>
+  </div>
+
+  <nav class="links bg_green">
+    <a href="index.html">Go Back</a>
+  </nav>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/balloon-battles/" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
