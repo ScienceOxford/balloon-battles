@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Robot Buggy Arena</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  <header>
+    <a href="https://scienceoxford.com" target="_blank"><img src=".\images\so_logo.png" alt="Science Oxford Logo" width="400px" height="auto"></a>
+    <h1>Speed up your Robot</h1>
+  </header>
+
+  <div id="intro" class="left">
+    <p>The values your joystick is sending, are not the highest values the motors can understand. You can adjust these to make the robot faster!</p>
+    <p><strong>It uses the same part of the code as in the 'help your robot drive in a straight line' example!</strong></p>
+    <br>
+  </div>
+
+  <div id="step1" class="left">
+    <h3>Step 1</h3>
+    <p>Before speeding up your robot, you must find out what values are being sent by your joystick.</p>
+    <p>During testing, you <strong>do not</strong> want your robot to drive around - put it on the stand, or hold it so that it cannot drive off.</p>
+    <p>To view the values, you need to use the <strong>REPL</strong> again.</p>
+    <p>Flash your code to the joystick's micro:bit, click the REPL button on Mu, then press the reset button on your micro:bit.</p>
+    <p>Look carefully values in the <strong>REPL</strong>:</p>
+    <ul>
+      <li>What do you get when the joystick is all the way forward, backward, left and right?</li>
+      <li>What do you get when the joystick is in the corners?</li>
+    </ul>
+    <p>Write down the <strong>highest</strong> number you can get from the joystick.</p>
+    <br>
+  </div>
+
+  <div id="step2" class="left">
+    <h3>Step 2</h3>
+    <p><strong>If you have already adjusted your code to help your robot drive in a straight line, <a href="#step3">skip to Step 3.</a></strong></p>
+    <p>Open your joystick code, and find the <code>def joystick_push():</code> section, which is above your <code>while True:</code> loop.</p>
+    <p>You are going to add some new code into this function, do not delete anything that is already there, and don't repeat any lines of code!</p>
+    <br>
+    <p>Currently, this function works out what numbers to send to the robot, to be the speed of the left and right wheels.</p>
+    <p>Add two new lines into the function, so that it looks like this:</p>
+    <pre>def joystick_push():
+        x = int(pin0.read_analog() - 512)
+        y = int(pin1.read_analog() - 512)
+        left = (y + x)
+        right = (y - x)
+
+        left = left * 1
+        right = right * 1
+
+        return left, right</pre>
+    <br>
+    <p>The two new lines won't do anything yet - but you can change these to make your robot drive in a straight line!</p>
+    <p><strong>Test your code and make sure that it still works before moving on.</strong></p>
+    <br>
+  </div>
+
+  <div id="step3" class="left">
+    <h3>Step 3</h3>
+    <p>The highest value that the motors can understand, is <strong>1023</strong>.</p>
+    <p>You can make the value from the joystick larger, by multiplying it - the trick is to make sure it doesn't go any higher than 1023, or you will get an error message!</p>
+    <p>Try changing the number from <code>1</code> to <code>1.1</code> - test the code and see how the numbers change in the REPL - can you get it close to, but <strong>not higher than</strong> 1023?</p>
+    <p><strong>If you have already adjusted your code to speed up your robot, one of your numbers will start lower than <code>1</code>. Remember to keep this one lower, so that your robot still drives in a straight line.</strong></p>
+  </div>
+
+  <nav class="links bg_green">
+    <a href="index.html">Go Back</a>
+  </nav>
+
+  <footer class="links">
+    <a href="https://github.com/ScienceOxford/balloon-battles/" target="_blank">View on GitHub</a>
+  </footer>
+
+</body>
+
+</html>
