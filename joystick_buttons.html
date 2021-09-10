@@ -31,8 +31,9 @@
         button = button_press()
 
         instructions = str(joystick[0]) + " " + str(joystick[1])
-        radio.send(instructions)
-        sleep(10)</pre>
+        print(instructions)
+        sleep(10)
+        radio.send(instructions)</pre>
     <br>
     <p>Now you need to tell the code:</p>
     <ul>
@@ -50,8 +51,9 @@
 
         else:
             instructions = str(joystick[0]) + " " + str(joystick[1])
-            radio.send(instructions)
-            sleep(10)</pre>
+            print(instructions)
+            sleep(10)
+            radio.send(instructions)</pre>
     <br>
     <p>Look carefully at the example code - which parts are the same, and which parts are new?</p>
     <p><strong>Indentation is very important!</strong> Test your code to check for errors, and see what happens to your robot when you press the joystick's 'A' button.</p>
